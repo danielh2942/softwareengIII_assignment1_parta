@@ -21,7 +21,10 @@ public class CollegeModule implements Comparable<CollegeModule> {
 	 * @param name     - The Name of the Module
 	 * @param lecturer - The Lecturer that instructs the module
 	 */
-	public CollegeModule(String name, Lecturer lecturer) {
+	public CollegeModule(String name, Lecturer lecturer) throws NoLecturerException {
+		if (lecturer == null) {
+			throw new NoLecturerException();
+		}
 		this.name = name;
 		this.lecturer = lecturer;
 		this.studentsEnrolled = new HashSet<Student>();
@@ -49,14 +52,18 @@ public class CollegeModule implements Comparable<CollegeModule> {
 	 * Replace the lecturer that runs the module with a new one
 	 *
 	 * @param lecturer - The new lecturer
+	 * @return boolean - Operation success
 	 */
-	public void setLecturer(Lecturer lecturer) {
+	public boolean setLecturer(Lecturer lecturer) {
+
 		if(lecturer == null || this.lecturer.equals(lecturer)) {
-			return;
+			return false;
 		}
+
 		Lecturer temp = this.lecturer;
 		this.lecturer = lecturer;
 		temp.getReplacedInModule(this,lecturer);
+		return true;
 	}
 
 	/**

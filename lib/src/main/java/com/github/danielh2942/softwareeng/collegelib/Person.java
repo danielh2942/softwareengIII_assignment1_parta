@@ -134,4 +134,8 @@ public abstract class Person implements Comparable<Person> {
 	public int hashCode() {
 		return (int)this.id;
 	}
+
+	public static long getTotalIds() {
+		return idTotal;
+	}
 }

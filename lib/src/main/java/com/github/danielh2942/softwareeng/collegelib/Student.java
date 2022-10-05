@@ -36,7 +36,8 @@ public class Student extends Person {
 	 *        should be enrolled in.
 	 */
 	public void setModulesEnrolled(HashSet<CollegeModule> modsEnrolled) {
-		Set<CollegeModule> tempModules = new HashSet<CollegeModule>(this.modulesEnrolled);
+		HashSet<CollegeModule> tempModules = new HashSet<CollegeModule>();
+		tempModules.addAll(this.modulesEnrolled);
 		for (CollegeModule module : tempModules) {
 			module.removeStudent(this);
 		}
@@ -122,7 +123,16 @@ public class Student extends Person {
 
 		this.coursesEnrolled.remove(course);
 		course.unenrollFromCourse(this);
-		return false;
+		return true;
+	}
+
+	/**
+	 * Get coursesEnrolled
+	 *
+	 * @return Set<Course> containing courses enrolled in
+	 */
+	public Set<Course> getCoursesEnrolled() {
+		return this.coursesEnrolled;
 	}
 
 	/**

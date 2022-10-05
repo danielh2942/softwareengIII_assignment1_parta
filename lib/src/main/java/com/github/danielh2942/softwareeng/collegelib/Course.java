@@ -141,6 +141,10 @@ public class Course {
 
 		this.enrolledStudents.add(student);
 		student.enrollInCourse(this);
+		// Enroll the student in a module
+		for (CollegeModule module : this.modulesOffered) {
+			student.enrollInModule(module);
+		}
 		return true;
 	}
 

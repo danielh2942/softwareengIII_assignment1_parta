@@ -48,9 +48,11 @@ public class Lecturer extends Person {
 		if (module == null || this.modulesTaught.contains(module)) {
 			return false;
 		}
-		
-		module.setLecturer(this);
-
+		try {	
+			module.setLecturer(this);
+		} catch(Exception e) {
+			// This can never ever happen so just eat the exception.
+		}
 		this.modulesTaught.add(module);
 		Lecturer temp = module.getLecturer();
 		temp.getReplacedInModule(module,this);
