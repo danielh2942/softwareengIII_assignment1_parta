@@ -163,4 +163,25 @@ public class Course {
 		student.unenrollFromCourse(this);
 		return true;
 	}
+
+	/**
+	 * Print out data for a Course
+	 *
+	 * @return {@link String} containing information about a course
+	 */
+	@Override
+	public String toString() {
+		String outputString = "Course Name: " + this.name;
+		outputString += "\nStart Date: " + this.startDate.toString("DD-MM-YY");
+		outputString += "\nEnd Date: " + this.endDate.toString("DD-MM-YY");
+		outputString += "\nModules Offered:";
+		for(CollegeModule m : this.modulesOffered) {
+			outputString += "\n\t\t" + m.getModuleName();
+		}
+		outputString += "\nEnrolled Students:";
+		for(Student s : this.enrolledStudents) {
+			outputString += "\n\t\t" + s.getName();
+		}
+		return outputString;
+	}
 }

@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Student is the class describing a student in collegelib
@@ -143,22 +144,19 @@ public class Student extends Person {
 	 */
 	@Override
 	public String toString() {
-		String output = String.format("%15s = Student\n%s",
-							          "Occupation",
-							          super.toString());
-		
-		output += String.format("\n%15s = %s","Courses",this.coursesEnrolled.toString()); 
-
-		boolean firstModule = true;
-		for(CollegeModule module : this.modulesEnrolled) {
-			if (firstModule) {
-				firstModule = false;
-				output+= String.format("\n%15s = %s","Enrolled in",module.getModuleName());
-			} else {
-				output += String.format(",\n%18s","",module.getModuleName());
-			}
+		String outputString = "Student Name: " + this.getName();
+		outputString += "\nID: " + this.getId();
+		outputString += "\nUsername: " + this.getUserName();
+		outputString += "\nDate Of Birth: " + this.getDateOfBirth().format(DateTimeFormatter.ISO_LOCAL_DATE);
+		outputString += "\nCourses Enrolled:";
+		for(Course c : this.coursesEnrolled) {
+			outputString += "\n\t\t"+c.getName();
 		}
-		return output;
+		outputString += "\nModules Enrolled:";
+		for(CollegeModule m: this.modulesEnrolled) {
+			outputString += "\n\t\t"+m.getModuleName();
+		}
+		return outputString;
 	}
 }
 

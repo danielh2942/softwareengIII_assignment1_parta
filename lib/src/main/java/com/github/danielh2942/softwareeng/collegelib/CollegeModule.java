@@ -122,4 +122,20 @@ public class CollegeModule implements Comparable<CollegeModule> {
 	public Set<Student> getStudentsEnrolled() {
 		return this.studentsEnrolled;
 	}
+
+	/**
+	 * Format the Module as a String
+	 *
+	 * @return String of formatted data
+	 */
+	@Override
+	public String toString() {
+		String outputString = "Course Name: " + this.name;
+		outputString += "\nLecturer: " + this.lecturer.getName();
+		outputString += "\nStudents Enrolled:";
+		for(Student s : this.studentsEnrolled) {
+			outputString += "\n\t\t"+s.getName();
+		}
+		return outputString;
+	}
 }

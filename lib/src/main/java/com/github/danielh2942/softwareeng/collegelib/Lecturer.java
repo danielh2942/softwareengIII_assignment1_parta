@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Lecturer is the class describing lecturers in collegelib
@@ -80,4 +81,21 @@ public class Lecturer extends Person {
 		return true;
 	}
 
+	/**
+	 * Get formatted string with information about a lecturer
+	 *
+	 * @return {@link String} containing information about a lecturer
+	 */
+	@Override
+	public String toString() {
+		String outputString = "Lecturer Name: " + this.getName();
+		outputString += "\nID: " + this.getId();
+		outputString += "\nUsername: " + this.getUserName();
+		outputString += "\nDate of Birth: " + this.getDateOfBirth().format(DateTimeFormatter.ISO_LOCAL_DATE);
+		outputString += "\nModules Taught:";
+		for (CollegeModule m : this.modulesTaught) {
+			outputString += "\n\t\t"+m.getModuleName();
+		}
+		return outputString;
+	}
 }
