@@ -28,6 +28,7 @@ public class CollegeModule implements Comparable<CollegeModule> {
 		this.name = name;
 		this.lecturer = lecturer;
 		this.studentsEnrolled = new HashSet<Student>();
+		lecturer.replaceLecturerInModule(this);
 	}
 
 	/**

@@ -56,7 +56,9 @@ public class Lecturer extends Person {
 		}
 		this.modulesTaught.add(module);
 		Lecturer temp = module.getLecturer();
-		temp.getReplacedInModule(module,this);
+		if (temp != null) {
+			temp.getReplacedInModule(module,this);
+		}
 		return true;
 	}
 
