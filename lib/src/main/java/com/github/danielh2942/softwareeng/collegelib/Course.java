@@ -165,6 +165,21 @@ public class Course {
 	}
 
 	/**
+	 * Add Module to course
+	 *
+	 * @param module - module to add
+	 * @return boolean - success
+	 */
+	public boolean addModuleToCourse(CollegeModule module) {
+		if(this.modulesOffered.contains(module)) {
+			return false;
+		}
+
+		this.modulesOffered.add(module);
+		return true;
+	}
+
+	/**
 	 * Print out data for a Course
 	 *
 	 * @return {@link String} containing information about a course
